@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My List
+{% endblock %}
+
+{% block main %}
+
+<div class="row">
+<div class="card-group">
+    {% for likedobject in likedobjects %}
+    <div class="col-sm-3">
+        <div class="card">
+             <!-- Image section-->
+                <div style="height: 420px;">
+                <img src = {{ likedobject[3] }} class="img-thumbnail" style="width:100%; height:400px; object-fit: contain;">
+                </div>
+
+             <!--Info and buttons-->
+                <div style="height: 300px; object-fit: contain;">
+                    <!-- Card Body-->
+                    <div class="card-body">
+                        <div style="height: 80px; object-fit: cover;">
+                            <h5 class="card-title"> {{ likedobject[1] }} </h5>
+                            <p class="card-text"> {{ likedobject[2] }} </p>
+                        </div>
+
+                        <div id="btn_objectinfo" style="height: 150px;">
+                            <div style="vertical-algin: bottom;">
+                                <form action="/explore" method="post">
+                                    <button class="btn btn-primary" type="submit" name="objectinfo" value={{ likedobject[0] }}> Learn more </button>
+                                </form>
+                                <a href={{ likedobject[4] }} class="btn btn-outline-primary btn-sm" style="margin-top:8px;"> Full Image </a>
+                            </div>
+                        </div>
+
+                </div>
+
+                <!-- Card Footer-->
+                <div class="card-footer">
+                    <form action="/mylist" method="post" style="vertical-align: middle;">
+                            <button small class="text-muted btn" type="submit" name="deleteobject" value={{ likedobject[0] }}>Delete from My list</small>
+                    </form>
+                </div>
+            </div>
+        <!--Info and buttons ends here-->
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

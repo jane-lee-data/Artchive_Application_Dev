@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Explore Artworks
+{% endblock %}
+
+{% block main %}
+<div class="margin">
+    <form action="/explore" method="POST">
+            <div class="mb-3">
+                <input autocomplete="on" autofocus class="form-control mx-auto w-50 form-control-lg" name="search" placeholder="Keyword" type="text">
+            </div>
+        <button class="btn btn-outline-primary btn-lg" type="submit">Search</button>
+    </form>
+</div>
+
+{% endblock %}

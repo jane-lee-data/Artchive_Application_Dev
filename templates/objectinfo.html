@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Artwork Information
+{% endblock %}
+
+{% block main %}
+
+<div class="vw-100">
+
+    <div class="container-sm">
+    {% for info in infos %}
+        <div style="margin-bottom: 30px;">
+            <h2 id="objecttitle"> {{ info[0] }} </h2>
+            <h3 id="artisttitle"> by {{ info[1] }} </h3>
+        </div>
+    {% endfor %}
+
+            {% for image in images %}
+                <img src={{ image[0] }} class="img-fluid mx-auto d-block" style="max-height:500px; height: 70%; width:auto;">
+            {% endfor %}
+
+
+    {% for info in infos %}
+        <div id="infotable" class="vw-50 container-fluid d-flex justify-content-center" style="margin-top: 40px;" >
+            <table class="table table-striped table-bordered" style="max-width: 900px; height: auto;">
+                <tr>
+                    <th scope="row" style="width:100px;">Date</th>
+                    <td> {{ info[2] }} </td>
+                </tr>
+                <tr>
+                    <th scope="row" style="width:100px;">Medium</th>
+                    <td> {{ info[3] }} </td>
+                </tr>
+                <tr>
+                    <th scope="row" style="width:100px;">Dimensions</th>
+                    <td> {{ info[4] }} </td>
+                </tr>
+                <tr>
+                    <th scope="row" style="width:100px;">Classification</th>
+                    <td> {{ info[5] }} </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Save object to My List-->
+        <div>
+            <form action="/mylist" method="post">
+                <button class="btn btn-primary" type="submit" name="saveobject" value={{ info[6] }}>Save to My List</button>
+            </form>
+        </div>
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

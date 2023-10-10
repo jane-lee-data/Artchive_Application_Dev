@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block main %}
+<div style="position:middle;">
+<h1> Build Your Ar(t)chive</h1>
+<h3> Explore the National Gallery of Art Collection</h3>
+</div>
+
+    <!-- Make a button that directs to explore.html -->
+    {% for welcomeimage in welcomeimage %}
+        <div class="container">
+            <img src= {{ welcomeimage[0] }} >
+            <a href= "/explore" class = "btn btn-primary">Search artworks</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

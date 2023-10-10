@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block main %}
+
+<div clsss="container">
+    <div class="card-columns">
+
+        <!-- 20 random artworks displayed-->
+        {% for randomimage in randomimages %}
+            <div class="card">
+                <div class="row">
+                    <!-- Hover over image to go to object info page-->
+                    <div class="hovercontainer">
+                        <img class="card-img image" src={{ randomimage[0] }}>
+                        <div class="hovermiddle middle" id="btn_objectinfo"">
+                            <form action="/explore" method="post">
+                                <button class="btn btn-outline-dark" type="submit" name="objectinfo" value={{ randomimage[1] }}> Artwork Details </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
